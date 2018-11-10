@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>get data page</title>
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+        </script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    </head>
+    <body>
+        <section class="result">Result: </section>
+        <input type="button" value="Sum with POST" onclick="POST()"/>
+        <input type="button" value="Multi with GET" onclick="GET()"/>
+        <input type="button" value="Average with PUT" onclick="PUT()"/>
+        
+        <script>
+            function POST() {
+                // POST:
+                $.post("http://localhost/service_calculator/index.php/",
+                {func:"sum",num1:1,num2:2,num3:3,num4:4},
+                function( data ) {
+                    $(".result").append(data.retVal + " ");
+                    console.log( "Return data: " + data.retVal);
+                });
+            };
+
+            function GET() {
+                // GET:
+                $.get("http://localhost/service_calculator/index.php?func=mult&num1=1&num2=2&num3=3&num4=4",
+                function( data ) {
+                    $(".result").append(data.retVal + " ");
+                    console.log( "Return data: " + data.retVal);
+                });
+            };
+
+            function PUT() {
+                // PUT:
+                var dataObj = {'func':'avg','num1':1,'num2':2,'num3':3,'num4':4};
+                $.ajax({
+                    url: 'http://localhost/service_calculator/index.php/',
+                    data:dataObj,
+                    //dataType:'json',
+                    type:'PUT',
+                    success: function( data ) {
+                            $(".result").append(data.retVal + " ");
+                            console.log( "Return data: " + data.retVal);
+                    }
+                });
+            };
+        </script>
+    </body>
+</html>
