@@ -23,8 +23,6 @@ class GetParams{
                 $this->num2 = (int)$_POST["num2"]; 
             if(isset($_POST["num3"])) 
                 $this->num3 = (int)$_POST["num3"];
-            if(isset($_POST["num4"]))  
-                $this->num4 = (int)$_POST["num4"];
             if(isset($_POST["func"])) 
                 $this->func = $_POST["func"];
         }
@@ -36,8 +34,6 @@ class GetParams{
                 $this->num2 = (int)$_GET["num2"]; 
             if(isset($_GET["num3"])) 
                 $this->num3 = (int)$_GET["num3"]; 
-            if(isset($_GET["num4"])) 
-                $this->num4 = (int)$_GET["num4"];
             if(isset($_GET["func"])) 
                 $this->func = $_GET["func"];
         }
@@ -50,8 +46,6 @@ class GetParams{
                 $this->num2 = (int)$_PUT["num2"]; 
             if(isset($_PUT["num3"]))       
                 $this->num3 = (int)$_PUT["num3"]; 
-            if(isset($_PUT["num4"]))         
-                $this->num4 = (int)$_PUT["num4"];
             if(isset($_PUT["func"]))         
                 $this->func = $_PUT["func"];
         }
@@ -59,13 +53,13 @@ class GetParams{
 
     public function calculate(){
         if ($this->func == 'sum'){
-            $this->res = $this->num1 + $this->num2 + $this->num3 + $this->num4; 
+            $this->res = $this->num1 + $this->num2 + $this->num3; 
         }
         else if ($this->func == 'avg'){
-            $this->res = ($this->num1 + $this->num2 + $this->num3 + $this->num4) / 4;
+            $this->res = ($this->num1 + $this->num2 + $this->num3) / 3;
         }
         else if ($this->func == 'mult'){
-            $this->res = $this->num1 * $this->num2 * $this->num3 * $this->num4;
+            $this->res = $this->num1 * $this->num2 * $this->num3;
         }
         else {return print('Error!');}
     }
