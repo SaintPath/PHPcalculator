@@ -16,7 +16,8 @@ class GetParams{
     }
 
     public function pramas() {
-        if($this->method == 'POST'){
+        switch($this->method){        
+        case 'POST':
             if(isset($_POST["num1"])) 
                 $this->num1 = (int)$_POST["num1"];
             if(isset($_POST["num2"])) 
@@ -25,9 +26,9 @@ class GetParams{
                 $this->num3 = (int)$_POST["num3"];
             if(isset($_POST["func"])) 
                 $this->func = $_POST["func"];
-        }
+            break;
 
-        if($this->method == 'GET'){
+        case 'GET':
             if(isset($_GET["num1"])) 
                 $this->num1 = (int)$_GET["num1"]; 
             if(isset($_GET["num2"])) 
@@ -36,9 +37,9 @@ class GetParams{
                 $this->num3 = (int)$_GET["num3"]; 
             if(isset($_GET["func"])) 
                 $this->func = $_GET["func"];
-        }
+            break;
             
-        if($this->method == 'PUT'){
+        case 'PUT':
             parse_str(file_get_contents("php://input"),$_PUT);
             if(isset($_PUT["num1"])) 
                 $this->num1 = (int)$_PUT["num1"]; 
@@ -48,22 +49,24 @@ class GetParams{
                 $this->num3 = (int)$_PUT["num3"]; 
             if(isset($_PUT["func"]))         
                 $this->func = $_PUT["func"];
+            break;
+            
         }
     }
 
     public function calculate(){
-        if ($this->func == 'sum'){
-            $this->res = $this->num1 + $this->num2 + $this->num3; 
+        switch ($this->func){
+            case 'sum':
+                $this->res = $this->num1 + $this->num2 + $this->num3;
+                break;
+            case 'avg':
+                $this->res = ($this->num1 + $this->num2 + $this->num3) / 3;
+                break;
+            case 'mult':
+                $this->res = $this->num1 * $this->num2 * $this->num3;
+                break;
         }
-        else if ($this->func == 'avg'){
-            $this->res = ($this->num1 + $this->num2 + $this->num3) / 3;
-        }
-        else if ($this->func == 'mult'){
-            $this->res = $this->num1 * $this->num2 * $this->num3;
-        }
-        else {return print('Error!');}
     }
-
 }
 ?>
 

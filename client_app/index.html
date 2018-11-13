@@ -18,7 +18,7 @@
         <script>
             function POST() {
                 // POST:
-                $.post("http://localhost/service_calculator/index.php/",
+                $.post("../service_calculator/index.php/",
                 {func:"sum",num1:2,num2:3,num3:4},
                 function( data ) {
                     $(".result").append(data.retVal + " ");
@@ -28,7 +28,7 @@
 
             function GET() {
                 // GET:
-                $.get("http://localhost/service_calculator/index.php?func=mult&num1=2&num2=3&num3=4",
+                $.get("../service_calculator/index.php?func=mult&num1=2&num2=3&num3=4",
                 function( data ) {
                     $(".result").append(data.retVal + " ");
                     console.log( "Return data: " + data.retVal);
@@ -39,7 +39,7 @@
                 // PUT:
                 var dataObj = {'func':'avg','num1':2,'num2':3,'num3':4};
                 $.ajax({
-                    url: 'http://localhost/service_calculator/index.php/',
+                    url: '../service_calculator/index.php/',
                     data:dataObj,
                     //dataType:'json',
                     type:'PUT',
