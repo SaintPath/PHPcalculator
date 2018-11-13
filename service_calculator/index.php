@@ -10,10 +10,10 @@
     if (isset($calc->method))
         $calc->pramas();
     
-    $calc->calculate();
-
+    $res = $calc->calculate();
+    
     // build the results Array
-    $a = array('retVal' => $calc->res);
+    $a = array('retVal' => $res);
     
     // set header for json response
     header('Content-Type: application/json'); 

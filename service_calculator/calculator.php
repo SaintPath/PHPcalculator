@@ -6,7 +6,6 @@ class GetParams{
     public $num4;
     public $func;
     public $method;
-    public $res;
     
     public function __construct(){
         $num1 = 0;
@@ -57,14 +56,16 @@ class GetParams{
     public function calculate(){
         switch ($this->func){
             case 'sum':
-                $this->res = $this->num1 + $this->num2 + $this->num3;
+                return $this->num1 + $this->num2 + $this->num3;
                 break;
             case 'avg':
-                $this->res = ($this->num1 + $this->num2 + $this->num3) / 3;
+                return ($this->num1 + $this->num2 + $this->num3) / 3;
                 break;
             case 'mult':
-                $this->res = $this->num1 * $this->num2 * $this->num3;
+                return $this->num1 * $this->num2 * $this->num3;
                 break;
+            default:
+                return 'Error!';
         }
     }
 }

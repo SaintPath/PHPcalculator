@@ -41,7 +41,6 @@
                 $.ajax({
                     url: '../service_calculator/index.php/',
                     data:dataObj,
-                    //dataType:'json',
                     type:'PUT',
                     success: function( data ) {
                             $(".result").append(data.retVal + " ");
